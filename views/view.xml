@@ -30,12 +30,17 @@
                             <field name="attendance_type"/>
                             <field name="check_in"/>
                             <field name="check_out"/>
+                            <field name="coupled_check"/>
                         </tree>
                         </field>
                 </record>
+        <record id="custom_attend_report_action" model="ir.actions.act_window">
+            <field name="name">Attending report coupled</field>
+            <field name="res_model">hr.attendance</field>
+        </record>
 
-        <menuitem name="Report" id="checks_coupled_report_menu" parent="hr_attendance.menu_hr_attendance_root"/>
-        <menuitem name="Coupled Attendees" id="attendance_checks_menu" parent="checks_coupled_report_menu"/>
+        <menuitem name="Report" id="checks_coupled_report_menu" parent="hr_attendance.menu_hr_attendance_root"
+                    action="custom_attend_report_action"/>
 
     </data>
 </odoo>

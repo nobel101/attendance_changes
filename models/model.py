@@ -32,20 +32,11 @@ class CheckAttend(models.Model):
         # TODO: loop over the two fields self.check_in and self.check_out
         for attend in self:
             # TODO: check if the check_in and check_out fields are set
-            if attend.check_in and attend.check_out:
-                # TODO: append the two fields to the container
-                couple.append(attend.check_in)
-                couple.append(attend.check_out)
-        # TODO: slice the container to get couples
+            # TODO: append the two fields to the container
+            couple.append(attend.check_in)
+            couple.append(attend.check_out)
+    # TODO: slice the container to get couples
         coupled = list(zip(couple, couple[1:] + couple[:2]))
         print(coupled)
-        # TODO: return the sliced list
-        return {
-            'xml_id': 'coupled_checks_attendance_action',
-            'name': _('coupled checks tree view'),
-            'view_type': 'tree',
-            'view_mode': 'tree',
-            'view_id': self.env.ref('coupled_checks_attendance_tree_view').id,
-            'res_model': 'hr.attendance',
-            'type': 'ir.actions.act_window',
-        }
+        self.write({'coupled_check':coupled})
+    # TODO: return the sliced list
